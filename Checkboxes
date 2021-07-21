@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"> 
+		<title> Checkboxes Original </title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+		
+		<!--Javascript-->
+		<script>
+			<!-- Timer -->
+			var timePassed = 6;
+			var counting;
+			var timerIsOn = 0;
+			
+			function timedCount()
+			{	
+				if (timePassed != 0)
+				{
+					timePassed = timePassed - 1;
+					document.getElementById("txt").value = "Time Left: " +timePassed +"s";
+					counting = setTimeout(timedCount, 1000);
+				}
+				if (timePassed == 0)
+				{
+					stopCount();
+					killPage();
+				}
+			}
+			
+			function startCount()
+			{
+				if(!timerIsOn)
+				{
+					timerIsOn = 1;
+					timedCount();
+				}
+			}
+			
+			function stopCount()
+			{
+				clearTimeout(counting);
+				timerIsOn = 0;
+			}
+			
+			<!--Declaring the change variable for the input field-> 
+			var change;
+			
+			<!--JQuery-->
+			$(document).ready(function()
+			{
+				$('input[type = "checkbox"]').on('change', function()
+				{
+					//alert('test');
+					//No heckin clue why this works?
+					//Changing the input field based on checked boxes 
+					change = Number(1);
+					if(!this.checked)
+					{
+						change = Number(-1);
+					}
+					document.getElementById("counter").value = Number(document.getElementById("counter").value) + change;
+					
+					startCount();
+				});
+				
+				// Restart Button
+				$('#RestartButton').click(function()
+				{
+					window.location = window.location.pathname;
+				});
+				
+			});
+			
+			
+			<!--Makes the page non responsive-->
+			function killPage()
+			{
+					$('body').css({"pointer-events": "none"});
+					$('#RestartButton').css({"pointer-events": "auto"});
+					alert("Time's Up!\nYour Score: " + document.getElementById("counter").value 
+						+ "\nClick >Restart< to play again!");
+			}
+		</script>
+		
+		<!--CSS-->
+		<style>
+			body 
+			{
+				background-color: #404040;
+			}
+			
+			#toppar
+			{
+				text-align: center;
+				font-size: 20px;
+				color: Silver;
+				font-family: Bookman Old Style;
+			}
+			
+			#counter
+			{
+				display: block;
+				margin: 0 auto;
+				height: 25px;
+				width: 230px;
+				background-color: Silver;
+				font-family: Bookman Old Style;
+				font-size: 18px;
+				text-align: center;
+				border-radius: 7px;
+				border: 2px solid #282828;
+			}
+			
+			#checkboxDiv
+			{
+				display: table;
+				margin: 0 auto;
+				margin-top: 10px;
+			}
+			
+			#RestartButton
+			{
+				font-family: Bookman Old Style;
+				font-size: 17px;
+				display: table;
+				margin: 0 auto;
+				margin-top: 3px;
+				height: 30px;
+				width: 80px;
+				border-radius: 7px;
+				border: 2px solid #282828;
+				background: Silver;
+			}
+			
+			#txt
+			{
+				font-family: Bookman Old Style;
+				font-size:20px;
+				text-align: center;
+				display: block;
+				margin: 0 auto;
+				width: 150px;
+				height: 30px;
+				background-color: Silver;
+				border: 3px solid #282828;
+				border-radius: 90px;
+			}
+			
+			input[type = "checkbox"] {
+				-webkit-appearance: none;
+				width: 32px;
+				height: 32px;
+				background: Silver;
+				border-radius: 5px;
+				border: 3px solid #282828;
+			}
+			input[type = "checkbox"]:checked {
+				background: #08D0CB;
+			}
+			
+		</style>
+	</head>
+	
+	<body>
+		<p id = "toppar"> How many boxes can you check in 5 seconds? </p>
+		
+		<input type = "number" name = "counter" 
+		placeholder = "Check a box to start" id = "counter"/>
+		
+		<div id = "checkboxDiv">
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<br/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<br/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<br/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<br/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<br/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<br/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<br/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<br/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<br/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<input type = "checkbox"/>
+			<br/>
+		</div>
+		<button type = "submit" value = "Restart" id = "RestartButton">Restart</button>
+		<hr>
+		<input type="text" id="txt" placeholder = "Time Left: 5s"/>
+	</body>
+</html>
